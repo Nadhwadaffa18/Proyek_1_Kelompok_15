@@ -41,6 +41,12 @@
                                         <td class="py-4">{{ $class->teacher->name ?? 'Belum Ditentukan' }}</td>
                                         <td class="py-4">{{ $class->created_at->format('d M Y') }}</td>
                                         <td class="py-4 text-right space-x-3">
+                                            <a href="{{ route('admin.classes.students', $class->id) }}" class="inline-flex items-center text-sm font-semibold text-emerald-600 dark:text-emerald-400 hover:text-emerald-800 dark:hover:text-emerald-300">
+                                                🧑‍🎓 Siswa
+                                            </a>
+                                            <a href="{{ route('admin.schedules.index', $class->id) }}" class="inline-flex items-center text-sm font-semibold text-amber-600 dark:text-amber-400 hover:text-amber-800 dark:hover:text-amber-300">
+                                                🗓️ Jadwal
+                                            </a>
                                             <a href="{{ route('admin.classes.edit', $class->id) }}" class="inline-flex items-center text-sm font-semibold text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300">
                                                 Edit
                                             </a>

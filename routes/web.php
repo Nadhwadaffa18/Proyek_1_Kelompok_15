@@ -8,6 +8,7 @@ use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\DiscussionController;
 use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\ClassScheduleController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -35,12 +36,28 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->grou
     Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
     Route::resource('users', UserController::class);
     Route::resource('classes', ClassController::class);
+
+    // Jadwal Kelas (hanya Admin)
+    Route::get('/classes/{classId}/schedules', [ClassScheduleController::class, 'index'])->name('schedules.index');
+    Route::post('/classes/{classId}/schedules', [ClassScheduleController::class, 'store'])->name('schedules.store');
+    Route::get('/classes/{classId}/schedules/{scheduleId}/edit', [ClassScheduleController::class, 'edit'])->name('schedules.edit');
+    Route::put('/classes/{classId}/schedules/{scheduleId}', [ClassScheduleController::class, 'update'])->name('schedules.update');
+    Route::delete('/classes/{classId}/schedules/{scheduleId}', [ClassScheduleController::class, 'destroy'])->name('schedules.destroy');
+
+    // Kelola Siswa Kelas (hanya Admin)
+    Route::get('/classes/{class}/students', [ClassController::class, 'manageStudents'])->name('classes.students');
+    Route::post('/classes/{class}/students', [ClassController::class, 'addStudent'])->name('classes.students.add');
+    Route::delete('/classes/{class}/students/{student}', [ClassController::class, 'removeStudent'])->name('classes.students.remove');
 });
 
 // Grup Rute Guru
 Route::middleware(['auth', 'role:guru'])->prefix('teacher')->name('teacher.')->group(function () {
     Route::get('/dashboard', [TeacherController::class, 'index'])->name('dashboard');
     Route::get('/classes/{class}', [TeacherController::class, 'classShow'])->name('classes.show');
+
+    // Jadwal Kelas — guru hanya bisa update link GMeet
+    Route::get('/classes/{classId}/schedules', [ClassScheduleController::class, 'teacherIndex'])->name('schedules.index');
+    Route::patch('/classes/{classId}/schedules/{scheduleId}/link', [ClassScheduleController::class, 'updateLink'])->name('schedules.updateLink');
 
     // Materi
     Route::get('/materials', [TeacherController::class, 'materialsIndex'])->name('materials.index');
@@ -71,9 +88,8 @@ Route::middleware(['auth', 'role:guru'])->prefix('teacher')->name('teacher.')->g
 Route::middleware(['auth', 'role:siswa'])->prefix('student')->name('student.')->group(function () {
     Route::get('/dashboard', [StudentController::class, 'index'])->name('dashboard');
     
-    // Daftar Kelas & Join
+    // Daftar Kelas (hanya yang ditetapkan admin)
     Route::get('/classes', [StudentController::class, 'classesIndex'])->name('classes.index');
-    Route::post('/classes/join', [StudentController::class, 'joinClass'])->name('classes.join');
     Route::get('/classes/{class}', [StudentController::class, 'classShow'])->name('classes.show');
 
     // Materi (Download)

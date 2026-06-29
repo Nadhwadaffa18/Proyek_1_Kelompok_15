@@ -63,6 +63,9 @@
                         </div>
                     </div>
 
+                    <!-- Jadwal Kelas -->
+                    <x-class-schedule :class="$class" />
+
                     <!-- Kuis / Ujian -->
                     <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-md border border-gray-100 dark:border-gray-700 overflow-hidden">
                         <div class="px-6 py-5 border-b border-gray-100 dark:border-gray-700 bg-gray-50/50 dark:bg-gray-800/50">

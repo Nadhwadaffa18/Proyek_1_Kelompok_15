@@ -45,4 +45,11 @@ class Classes extends Model
     {
         return $this->hasMany(Discussion::class, 'class_id')->orderByDesc('is_pinned')->latest();
     }
+
+    public function schedules()
+    {
+        return $this->hasMany(ClassSchedule::class, 'class_id')
+            ->orderByRaw("FIELD(day, 'Senin','Selasa','Rabu','Kamis','Jumat','Sabtu','Minggu')")
+            ->orderBy('start_time');
+    }
 }

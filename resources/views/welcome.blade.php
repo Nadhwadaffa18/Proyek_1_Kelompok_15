@@ -33,10 +33,7 @@
 
         <!-- Header -->
         <header class="relative z-10 max-w-7xl mx-auto px-6 py-6 flex items-center justify-between">
-            <div class="flex items-center space-x-3">
-                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-500 to-blue-600 flex items-center justify-center shadow-lg shadow-indigo-500/20">
-                    <span class="font-outfit font-extrabold text-lg text-white">A</span>
-                </div>
+            <div class="flex items-center">
                 <span class="font-outfit font-bold text-xl tracking-tight text-white bg-clip-text bg-gradient-to-r from-white to-slate-400">Aksara</span>
             </div>
 

@@ -41,38 +41,14 @@ class StudentController extends Controller
         return view('student.dashboard', compact('classes', 'stats', 'pendingAssignments'));
     }
 
-    // Daftar Semua Kelas & Join
+    // Daftar Kelas yang sudah ditetapkan Admin
     public function classesIndex()
     {
         $student = auth()->user();
-        $joinedClassIds = $student->studentClasses()->pluck('classes.id')->toArray();
-        
-        // Classes the student has NOT joined yet
-        $availableClasses = Classes::with('teacher')
-            ->whereNotIn('id', $joinedClassIds)
-            ->get();
 
-        $joinedClasses = Classes::with('teacher')
-            ->whereIn('id', $joinedClassIds)
-            ->get();
+        $enrolledClasses = $student->studentClasses()->with('teacher')->get();
 
-        return view('student.classes.index', compact('availableClasses', 'joinedClasses'));
-    }
-
-    // Join ke Kelas
-    public function joinClass(Request $request)
-    {
-        $request->validate([
-            'class_id' => 'required|exists:classes,id',
-        ]);
-
-        $student = auth()->user();
-        
-        // Attach student to class in pivot table (class_student)
-        // using syncWithoutDetaching to prevent duplicates
-        $student->studentClasses()->syncWithoutDetaching([$request->class_id]);
-
-        return redirect()->route('student.classes.index')->with('success', 'Berhasil bergabung dengan kelas.');
+        return view('student.classes.index', compact('enrolledClasses'));
     }
 
     // Tampilan Detail Kelas bagi Siswa
