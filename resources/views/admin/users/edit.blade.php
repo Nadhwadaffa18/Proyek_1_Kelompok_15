@@ -1,73 +1,74 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-2xl text-gray-800 dark:text-gray-200 leading-tight">
+        <h2 class="font-bold text-2xl text-slate-900 dark:text-white tracking-tight leading-tight">
             {{ __('Edit Pengguna') }}
         </h2>
     </x-slot>
 
-    <div class="py-12">
-        <div class="max-w-xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-md border border-gray-100 dark:border-gray-700 overflow-hidden">
-                <div class="p-6">
-                    <form action="{{ route('admin.users.update', $user->id) }}" method="POST" class="space-y-6">
-                        @csrf
-                        @method('PATCH')
+    <div class="max-w-xl mx-auto">
+        <div class="bg-white dark:bg-slate-900 rounded-[18px] border border-slate-200/80 dark:border-slate-800/80 shadow-soft overflow-hidden">
+            <div class="p-8">
+                <form action="{{ route('admin.users.update', $user->id) }}" method="POST" class="space-y-6">
+                    @csrf
+                    @method('PATCH')
 
-                        <!-- Nama -->
-                        <div>
-                            <x-input-label for="name" :value="__('Nama Lengkap')" />
-                            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name', $user->name)" required autofocus />
-                            <x-input-error :messages="$errors->get('name')" class="mt-2" />
-                        </div>
+                    <!-- Nama -->
+                    <div>
+                        <x-input-label for="name" :value="__('Nama Lengkap')" class="text-xs font-bold uppercase tracking-wider text-slate-500 font-mono" />
+                        <x-text-input id="name" class="block mt-1.5 w-full" type="text" name="name" :value="old('name', $user->name)" required autofocus />
+                        <x-input-error :messages="$errors->get('name')" class="mt-2" />
+                    </div>
 
-                        <!-- Email -->
-                        <div>
-                            <x-input-label for="email" :value="__('Alamat Email')" />
-                            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email', $user->email)" required />
-                            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-                        </div>
+                    <!-- Email -->
+                    <div>
+                        <x-input-label for="email" :value="__('Alamat Email')" class="text-xs font-bold uppercase tracking-wider text-slate-500 font-mono" />
+                        <x-text-input id="email" class="block mt-1.5 w-full" type="email" name="email" :value="old('email', $user->email)" required />
+                        <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                    </div>
 
-                        <!-- Role -->
-                        <div>
-                            <x-input-label for="role" :value="__('Peran (Role)')" />
-                            <select id="role" name="role" class="block mt-1 w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm" required>
-                                <option value="siswa" {{ old('role', $user->role) === 'siswa' ? 'selected' : '' }}>Siswa</option>
-                                <option value="guru" {{ old('role', $user->role) === 'guru' ? 'selected' : '' }}>Guru</option>
-                                <option value="admin" {{ old('role', $user->role) === 'admin' ? 'selected' : '' }}>Admin</option>
-                            </select>
-                            <x-input-error :messages="$errors->get('role')" class="mt-2" />
-                        </div>
+                    <!-- Role -->
+                    <div>
+                        <x-input-label for="role" :value="__('Peran (Role)')" class="text-xs font-bold uppercase tracking-wider text-slate-500 font-mono" />
+                        <select id="role" name="role" class="block mt-1.5 w-full bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 border border-slate-200 dark:border-slate-800 focus:border-indigo-500 dark:focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 dark:focus:ring-indigo-500 rounded-[12px] shadow-sm py-2.5 px-3.5 transition-all text-sm" required>
+                            <option value="siswa" {{ old('role', $user->role) === 'siswa' ? 'selected' : '' }}>Siswa</option>
+                            <option value="guru" {{ old('role', $user->role) === 'guru' ? 'selected' : '' }}>Guru</option>
+                            <option value="admin" {{ old('role', $user->role) === 'admin' ? 'selected' : '' }}>Admin</option>
+                        </select>
+                        <x-input-error :messages="$errors->get('role')" class="mt-2" />
+                    </div>
 
-                        <!-- Info Password -->
-                        <div class="p-4 bg-gray-50 dark:bg-gray-900 rounded-xl text-xs text-gray-500 dark:text-gray-400">
-                            {{ __('Kosongkan kata sandi dan konfirmasi jika tidak ingin menggantinya.') }}
-                        </div>
+                   <!-- Info Password -->
+                    <div class="p-4 bg-blue-500/5 border border-blue-500/10 rounded-xl text-xs text-blue-600 dark:text-blue-400 font-medium flex items-start gap-2">
+                        <svg class="w-4 h-4 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <span>{{ __('Kosongkan kata sandi dan konfirmasi jika tidak ingin menggantinya.') }}</span>
+                    </div>
 
-                        <!-- Password -->
-                        <div>
-                            <x-input-label for="password" :value="__('Kata Sandi Baru')" />
-                            <x-text-input id="password" class="block mt-1 w-full" type="password" name="password" />
-                            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-                        </div>
+                    <!-- Password -->
+                    <div>
+                        <x-input-label for="password" :value="__('Kata Sandi Baru')" class="text-xs font-bold uppercase tracking-wider text-slate-500 font-mono" />
+                        <x-text-input id="password" class="block mt-1.5 w-full" type="password" name="password" placeholder="••••••••" />
+                        <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                    </div>
 
-                        <!-- Confirm Password -->
-                        <div>
-                            <x-input-label for="password_confirmation" :value="__('Konfirmasi Kata Sandi Baru')" />
-                            <x-text-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" />
-                            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
-                        </div>
+                    <!-- Confirm Password -->
+                    <div>
+                        <x-input-label for="password_confirmation" :value="__('Konfirmasi Kata Sandi Baru')" class="text-xs font-bold uppercase tracking-wider text-slate-500 font-mono" />
+                        <x-text-input id="password_confirmation" class="block mt-1.5 w-full" type="password" name="password_confirmation" placeholder="••••••••" />
+                        <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+                    </div>
 
-                        <!-- Actions -->
-                        <div class="flex items-center justify-end space-x-4">
-                            <a href="{{ route('admin.users.index') }}" class="text-sm font-semibold text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200">
-                                Batal
-                            </a>
-                            <button type="submit" class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-indigo-500 to-blue-600 text-sm font-semibold rounded-xl text-white shadow-md shadow-indigo-500/10 hover:opacity-90 transform active:scale-[0.98] transition-all">
-                                Perbarui Pengguna
-                            </button>
-                        </div>
-                    </form>
-                </div>
+                    <!-- Actions -->
+                    <div class="flex items-center justify-end space-x-4 pt-4 border-t border-slate-100 dark:border-slate-800/80">
+                        <a href="{{ route('admin.users.index') }}" class="text-sm font-semibold text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200 transition-colors">
+                            Batal
+                        </a>
+                        <x-primary-button>
+                            Perbarui Pengguna
+                        </x-primary-button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
