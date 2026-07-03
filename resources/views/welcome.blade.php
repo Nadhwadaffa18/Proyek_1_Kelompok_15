@@ -63,7 +63,7 @@
             <!-- Left Info -->
             <div class="lg:col-span-7 space-y-8 text-center lg:text-left">
                 <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-xs font-semibold uppercase tracking-wider">
-                    <span>🚀 Platform Pembelajaran Digital Modern</span>
+                    <span>Platform Pembelajaran Digital Modern</span>
                 </div>
 
                 <h1 class="font-outfit font-extrabold text-5xl md:text-6xl tracking-tight leading-tight text-white">
@@ -89,75 +89,9 @@
                         </a>
                     @endauth
                 </div>
-
-                <!-- Credential quick guide for testing -->
-                <div class="pt-8 border-t border-slate-900 text-left max-w-lg mx-auto lg:mx-0">
-                    <p class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-3">🔑 Akun Demo Pengujian:</p>
-                    <div class="grid grid-cols-3 gap-3 text-xs">
-                        <div class="p-3 bg-slate-900/60 border border-slate-800 rounded-xl space-y-1">
-                            <p class="font-bold text-indigo-400">Admin</p>
-                            <p class="text-slate-500 select-all">admin@aksara.com</p>
-                            <p class="text-slate-600">pass: password</p>
-                        </div>
-                        <div class="p-3 bg-slate-900/60 border border-slate-800 rounded-xl space-y-1">
-                            <p class="font-bold text-emerald-400">Guru</p>
-                            <p class="text-slate-500 select-all">guru@aksara.com</p>
-                            <p class="text-slate-600">pass: password</p>
-                        </div>
-                        <div class="p-3 bg-slate-900/60 border border-slate-800 rounded-xl space-y-1">
-                            <p class="font-bold text-amber-400">Siswa</p>
-                            <p class="text-slate-500 select-all">siswa@aksara.com</p>
-                            <p class="text-slate-600">pass: password</p>
-                        </div>
-                    </div>
-                </div>
             </div>
 
-            <!-- Right Visual Cards (Mockup styling) -->
-            <div class="lg:col-span-5 relative">
-                <div class="absolute -inset-1 rounded-2xl bg-gradient-to-r from-indigo-500 to-blue-500 opacity-20 blur-xl"></div>
-                
-                <!-- Main Mockup Container -->
-                <div class="relative bg-slate-900/85 backdrop-blur-md rounded-2xl border border-slate-800/85 p-6 space-y-6 shadow-2xl">
-                    <div class="flex items-center justify-between border-b border-slate-800/80 pb-4">
-                        <div class="flex items-center space-x-2">
-                            <span class="w-3 h-3 rounded-full bg-rose-500"></span>
-                            <span class="w-3 h-3 rounded-full bg-amber-500"></span>
-                            <span class="w-3 h-3 rounded-full bg-emerald-500"></span>
-                        </div>
-                        <span class="text-xs text-slate-500 font-medium font-outfit">aksara-digital-classroom.app</span>
-                    </div>
-
-                    <!-- Role features details inside mockup -->
-                    <div class="space-y-4">
-                        <!-- Admin Card -->
-                        <div class="p-4 rounded-xl bg-slate-950/70 border border-indigo-500/10 flex items-center space-x-4">
-                            <div class="w-10 h-10 rounded-lg bg-indigo-500/10 flex items-center justify-center text-indigo-400 font-bold text-sm">AD</div>
-                            <div>
-                                <h4 class="text-sm font-bold text-white">Panel Administrator</h4>
-                                <p class="text-xs text-slate-500">Kelola pengguna (Guru/Siswa) & pembuatan kelas</p>
-                            </div>
-                        </div>
-
-                        <!-- Teacher Card -->
-                        <div class="p-4 rounded-xl bg-slate-950/70 border border-emerald-500/10 flex items-center space-x-4">
-                            <div class="w-10 h-10 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-400 font-bold text-sm">GR</div>
-                            <div>
-                                <h4 class="text-sm font-bold text-white">Kelola Materi & Ujian</h4>
-                                <p class="text-xs text-slate-500">Unggah berkas, tugaskan tugas, & bikin kuis</p>
-                            </div>
-                        </div>
-
-                        <!-- Student Card -->
-                        <div class="p-4 rounded-xl bg-slate-950/70 border border-amber-500/10 flex items-center space-x-4">
-                            <div class="w-10 h-10 rounded-lg bg-amber-500/10 flex items-center justify-center text-amber-400 font-bold text-sm">SW</div>
-                            <div>
-                                <h4 class="text-sm font-bold text-white">Ruang Belajar Siswa</h4>
-                                <p class="text-xs text-slate-500">Akses materi, submit tugas, & ujian dengan timer</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            
             </div>
         </main>
 
@@ -200,7 +134,7 @@
 
         <!-- Footer -->
         <footer class="relative z-10 max-w-7xl mx-auto px-6 py-8 border-t border-slate-900 text-center text-slate-500 text-xs">
-            <p>&copy; 2026 Aksara Digital Classroom. Built with Laravel and Tailwind CSS.</p>
+            <p>&copy; 2026 Aksara Digital Classroom.</p>
         </footer>
     </body>
 </html>

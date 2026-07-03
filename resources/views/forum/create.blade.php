@@ -1,42 +1,47 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-2xl text-gray-800 dark:text-gray-200 leading-tight">
-            ➕ Topik Diskusi Baru — {{ $class->name }}
-        </h2>
+        <div class="flex justify-between items-center w-full">
+            <h2 class="font-bold text-2xl text-slate-900 dark:text-white tracking-tight leading-tight">
+                ➕ Topik Diskusi Baru — {{ $class->name }}
+            </h2>
+            <a href="{{ route('forum.index', $class->id) }}" class="inline-flex items-center text-sm font-semibold text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200 transition-colors">
+                <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                </svg>
+                Kembali
+            </a>
+        </div>
     </x-slot>
 
-    <div class="py-10">
-        <div class="max-w-2xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 overflow-hidden">
-                <div class="p-6">
-                    <form action="{{ route('forum.store', $class->id) }}" method="POST" class="space-y-5">
-                        @csrf
-                        <div>
-                            <label for="title" class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1">Judul Topik</label>
-                            <input type="text" id="title" name="title" value="{{ old('title') }}" required autofocus
-                                placeholder="Contoh: Apa perbedaan antara A dan B?"
-                                class="block w-full border border-gray-200 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 rounded-xl px-4 py-2.5 text-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all">
-                            @error('title')<p class="text-xs text-rose-500 mt-1">{{ $message }}</p>@enderror
-                        </div>
-                        <div>
-                            <label for="body" class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1">Isi Diskusi</label>
-                            <textarea id="body" name="body" rows="6" required
-                                placeholder="Jelaskan pertanyaan atau topik yang ingin Anda diskusikan..."
-                                class="block w-full border border-gray-200 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none resize-none transition-all">{{ old('body') }}</textarea>
-                            @error('body')<p class="text-xs text-rose-500 mt-1">{{ $message }}</p>@enderror
-                        </div>
-                        <div class="flex items-center justify-end gap-3">
-                            <a href="{{ route('forum.index', $class->id) }}"
-                               class="text-sm font-semibold text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition-colors">
-                                Batal
-                            </a>
-                            <button type="submit"
-                                class="inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-indigo-500 to-blue-600 text-white text-sm font-semibold rounded-xl shadow-md shadow-indigo-500/20 hover:opacity-90 transition-all">
-                                Buat Topik
-                            </button>
-                        </div>
-                    </form>
-                </div>
+    <div class="max-w-2xl mx-auto">
+        <div class="bg-white dark:bg-slate-900 rounded-[18px] border border-slate-200/80 dark:border-slate-800/80 shadow-soft overflow-hidden">
+            <div class="p-8">
+                <form action="{{ route('forum.store', $class->id) }}" method="POST" class="space-y-6">
+                    @csrf
+                    <div>
+                        <label for="title" class="block text-xs font-bold uppercase tracking-wider text-slate-500 font-mono mb-1.5">Judul Topik</label>
+                        <input type="text" id="title" name="title" value="{{ old('title') }}" required autofocus
+                            placeholder="Contoh: Apa perbedaan antara A dan B?"
+                            class="block w-full bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-100 border border-slate-200 dark:border-slate-800 focus:border-indigo-500 dark:focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 dark:focus:ring-indigo-500 rounded-[12px] shadow-sm py-2.5 px-3.5 transition-all text-sm outline-none">
+                        @error('title')<p class="text-xs text-rose-500 mt-1 font-semibold">{{ $message }}</p>@enderror
+                    </div>
+                    <div>
+                        <label for="body" class="block text-xs font-bold uppercase tracking-wider text-slate-500 font-mono mb-1.5">Isi Diskusi</label>
+                        <textarea id="body" name="body" rows="6" required
+                            placeholder="Jelaskan pertanyaan atau topik yang ingin Anda diskusikan..."
+                            class="block w-full bg-white dark:bg-slate-955 text-slate-900 dark:text-slate-100 border border-slate-200 dark:border-slate-800 focus:border-indigo-500 dark:focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 dark:focus:ring-indigo-500 rounded-[12px] shadow-sm py-3.5 px-3.5 transition-all text-sm outline-none resize-none" style="resize: none;">{{ old('body') }}</textarea>
+                        @error('body')<p class="text-xs text-rose-500 mt-1 font-semibold">{{ $message }}</p>@enderror
+                    </div>
+                    <div class="flex items-center justify-end space-x-4 pt-4 border-t border-slate-100 dark:border-slate-800/80">
+                        <a href="{{ route('forum.index', $class->id) }}"
+                           class="text-sm font-semibold text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200 transition-colors">
+                            Batal
+                        </a>
+                        <x-primary-button>
+                            Buat Topik
+                        </x-primary-button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
