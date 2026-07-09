@@ -19,6 +19,17 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        // Auto-create storage directories for hosting environments
+        $directories = [
+            storage_path('framework/sessions'),
+            storage_path('framework/views'),
+            storage_path('framework/cache/data'),
+        ];
+        
+        foreach ($directories as $dir) {
+            if (!is_dir($dir)) {
+                @mkdir($dir, 0775, true);
+            }
+        }
     }
 }
