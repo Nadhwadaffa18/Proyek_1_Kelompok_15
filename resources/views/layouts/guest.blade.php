@@ -61,8 +61,7 @@
             <!-- Branding -->
             <div class="text-center mb-8">
                 <a href="/" class="inline-block">
-                    <img src="{{ asset('storage/images/logo_aksara.png') }}"
-        alt="Aksara"  class="h-20    w-auto mx-auto">
+                    <img src="{{ asset('images/logo_aksara.png') }}" alt="Logo Aksara"  class="h-20    w-auto mx-auto">
                     <span class="font-bold text-3xl tracking-tight bg-gradient-to-r from-[#2563EB] to-[#4F46E5] bg-clip-text text-transparent font-display">Aksara</span>
                 </a>
                 <p class="text-slate-500 text-sm mt-2">Sistem Manajemen Pembelajaran Digital</p>
