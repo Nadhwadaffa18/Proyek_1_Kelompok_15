@@ -246,18 +246,17 @@
                         </div>
                         <h3 class="font-display font-bold text-xl text-slate-900 mb-3">Gradebook Otomatis</h3>
                         <p class="text-slate-500 text-sm leading-relaxed">Rekap nilai tugas dan kuis otomatis tersimpan dengan aman. Siswa dapat langsung melihat nilai beserta umpan balik tertulis secara langsung.</p>
-                    </div>
                 </div>
+            </div>
         </section>
 
-                <!-- Card 4: Forum & Jadwal Kelas (Spans 3 cols on desktop for bento feel) -->
-                <section id="forum" class="relative z-10 max-w-7xl mx-auto px-6 py-24 border-t border-slate-100 bg-[#F8FAFC]">
-                <div class="bg-gradient-to-r from-primary to-secondary rounded-card p-8 md:col-span-3 text-white shadow-lg shadow-primary/10 hover:scale-[1.01] transition-transform duration-300">
-                    <div class="max-w-3xl space-y-4">
-                        <span class="inline-block text-xs font-bold bg-white/20 px-3 py-1 rounded-full uppercase tracking-wider"><i class="fa-solid fa-comments mr-1"></i> Kolaborasi Aktif</span>
-                        <h3 class="font-display font-extrabold text-2xl">Forum Diskusi Interaktif & Jadwal Terpadu</h3>
-                        <p class="text-white/80 text-sm leading-relaxed">Tingkatkan keterlibatan kelas melalui ruang diskusi yang didedikasikan untuk materi pelajaran. Guru dan siswa dapat saling berdiskusi, mengajukan pertanyaan, serta mengakses tautan kelas online (seperti Google Meet) langsung dari panel jadwal terpadu.</p>
-                    </div>
+        <!-- Forum Section -->
+        <section id="forum" class="relative z-10 max-w-7xl mx-auto px-6 py-24 border-t border-slate-100 bg-[#F8FAFC]">
+            <div class="bg-gradient-to-r from-primary to-secondary rounded-card p-8 text-white shadow-lg shadow-primary/10 hover:scale-[1.01] transition-transform duration-300">
+                <div class="max-w-3xl space-y-4">
+                    <span class="inline-block text-xs font-bold bg-white/20 px-3 py-1 rounded-full uppercase tracking-wider"><i class="fa-solid fa-comments mr-1"></i> Kolaborasi Aktif</span>
+                    <h3 class="font-display font-extrabold text-2xl">Forum Diskusi Interaktif & Jadwal Terpadu</h3>
+                    <p class="text-white/80 text-sm leading-relaxed">Tingkatkan keterlibatan kelas melalui ruang diskusi yang didedikasikan untuk materi pelajaran. Guru dan siswa dapat saling berdiskusi, mengajukan pertanyaan, serta mengakses tautan kelas online (seperti Google Meet) langsung dari panel jadwal terpadu.</p>
                 </div>
             </div>
         </section>

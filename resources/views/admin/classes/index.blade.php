@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <div class="flex justify-between items-center w-full gap-4">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between w-full gap-3">
             <h2 class="font-bold text-2xl text-slate-900 tracking-tight leading-tight">
                 {{ __('Kelola Kelas') }}
             </h2>
@@ -48,7 +48,7 @@
                                         @endif
                                     </td>
                                     <td class="py-4 font-mono text-xs text-slate-400">{{ $class->created_at->format('d M Y') }}</td>
-                                    <td class="py-4 text-right space-x-3.5">
+                                    <td class="py-4 text-right space-x-3.5 whitespace-nowrap">
                                         <a href="{{ route('admin.classes.students', $class->id) }}" class="inline-flex items-center text-xs font-bold text-emerald-600 hover:underline">
                                             Siswa
                                         </a>

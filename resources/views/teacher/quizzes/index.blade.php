@@ -1,10 +1,10 @@
 <x-app-layout>
     <x-slot name="header">
-        <div class="flex justify-between items-center w-full gap-4">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between w-full gap-3">
             <h2 class="font-bold text-2xl text-slate-900  tracking-tight leading-tight">
                 {{ __('Kelola Kuis / Ujian') }}
             </h2>
-            <a href="{{ route('teacher.quizzes.create') }}" class="inline-flex items-center whitespace-nowrap px-4 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-sm font-semibold rounded-xl text-white shadow-sm hover:shadow active:scale-[0.98] transition-all duration-150">
+            <a href="{{ route('teacher.quizzes.create') }}" class="inline-flex items-center whitespace-nowrap px-4 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-sm font-semibold rounded-xl text-white shadow-sm hover:shadow active:scale-[0.98] transition-all duration-150 w-fit">
                 <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
                 </svg>
@@ -47,7 +47,7 @@
                                             {{ $quiz->questions()->count() }} SOAL
                                         </span>
                                     </td>
-                                    <td class="py-4 text-right space-x-3.5">
+                                    <td class="py-4 text-right space-x-3.5 whitespace-nowrap">
                                         <a href="{{ route('teacher.quizzes.show', $quiz->id) }}" class="inline-flex items-center text-xs font-bold text-indigo-600 hover:underline">
                                             Kelola Kuis
                                         </a>

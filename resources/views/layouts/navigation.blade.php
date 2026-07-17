@@ -140,12 +140,9 @@
                    @click="sidebarOpen = false"
                    class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all {{ $isActive ? 'bg-primary text-white shadow-lg shadow-primary/20' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50' }}">
                     <i class="{{ $link['icon'] }} w-5 text-center shrink-0 text-base {{ $isActive ? 'text-white' : 'text-slate-400' }}"></i>
-                    <span
-    x-show="!sidebarCollapsed"
-    x-transition.opacity.duration.200ms
->
-    {{ $link['label'] }}
-</span>
+                    <span>
+                        {{ $link['label'] }}
+                    </span>
                 </a>
             @endforeach
         </nav>

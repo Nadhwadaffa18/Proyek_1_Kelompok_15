@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <div class="flex justify-between items-center w-full gap-4">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between w-full gap-3">
             <h2 class="font-bold text-2xl text-slate-900  tracking-tight leading-tight">
                 {{ __('Kelola Pengguna') }}
             </h2>
@@ -71,7 +71,7 @@
                                             {{ $user->role }}
                                         </span>
                                     </td>
-                                    <td class="py-4 text-right space-x-3">
+                                    <td class="py-4 text-right space-x-3 whitespace-nowrap">
                                         <a href="{{ route('admin.users.edit', $user->id) }}" class="inline-flex items-center text-sm font-semibold text-indigo-600 hover:text-indigo-800">
                                             Edit
                                         </a>
