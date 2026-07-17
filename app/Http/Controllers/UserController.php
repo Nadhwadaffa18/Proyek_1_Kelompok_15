@@ -9,11 +9,28 @@ use Illuminate\Validation\Rules;
 
 class UserController extends Controller
 {
-    public function index()
-    {
-        $users = User::paginate(10);
-        return view('admin.users.index', compact('users'));
-    }
+    public function index(Request $request)
+{
+    $search = $request->search;
+
+    $users = User::when($search, function ($query) use ($search) {
+            $query->where('name', 'like', "%{$search}%")
+                  ->orWhere('email', 'like', "%{$search}%")
+                  ->orWhere('role', 'like', "%{$search}%");
+        })
+        ->orderByRaw("
+            CASE
+                WHEN role = 'admin' THEN 1
+                WHEN role = 'guru' THEN 2
+                WHEN role = 'siswa' THEN 3
+            END
+        ")
+        ->orderBy('name')
+        ->paginate(10)
+        ->withQueryString();
+
+    return view('admin.users.index', compact('users'));
+}
 
     public function create()
     {

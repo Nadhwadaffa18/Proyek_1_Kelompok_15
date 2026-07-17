@@ -1,272 +1,311 @@
 ---
-version: "modern-education-lms-v1"
+version: "modern-education-lms-v2"
 name: "Aksara"
-description: "Aksara Learning Management System is designed as a modern web-based education platform that centralizes digital learning activities for administrators, teachers, and students. The interface emphasizes clarity, accessibility, and productivity with a clean dashboard, structured navigation, and responsive user experience."
+description: "Aksara Learning Management System is designed using Modern Minimalist + Glassmorphism + Bento UI for a clean, professional, fast, and accessible LMS."
 
 colors:
-  primary: "#4F46E5"
-  secondary: "#4338CA"
-  accent: "#10B981"
+  primary: "#2563EB"
+  secondary: "#4F46E5"
+  accent: "#60A5FA"
+  success: "#22C55E"
+  warning: "#F59E0B"
+  danger: "#EF4444"
   background: "#F8FAFC"
   surface: "#FFFFFF"
   text-primary: "#0F172A"
   text-secondary: "#64748B"
-  border: "#E2E8F0"
-  warning: "#F59E0B"
-  danger: "#F43F5E"
 
 typography:
-  display-lg:
-    fontFamily: "Inter"
-    fontSize: "56px"
-    fontWeight: 700
-    lineHeight: "1.1"
-    letterSpacing: "-0.03em"
-
-  heading-md:
-    fontFamily: "Inter"
-    fontSize: "32px"
-    fontWeight: 600
-    lineHeight: "1.25"
-
-  body-md:
-    fontFamily: "Inter"
-    fontSize: "16px"
-    fontWeight: 400
-    lineHeight: "1.7"
-
-  label-md:
-    fontFamily: "JetBrains Mono"
-    fontSize: "12px"
-    fontWeight: 600
-    lineHeight: "1.2"
-
-spacing:
-  base: "8px"
-  gap: "24px"
-  card-padding: "24px"
-  section-padding: "96px"
+  font-primary: "Poppins"
+  font-secondary: "Plus Jakarta Sans"
+  heading-h1: "48px Bold"
+  heading-h2: "36px Bold"
+  heading-h3: "28px SemiBold"
+  heading-h4: "22px SemiBold"
+  body: "16px Regular"
 
 rounded:
-  card: "18px"
-  control: "12px"
-  button: "12px"
-  pill: "9999px"
+  card: "20px"
+  button: "14px"
+  pill: "999px"
 
-components:
-  sidebar:
-    background: "White surface with subtle border"
-    width: "280px"
-    active-state: "Primary background with white text"
+spacing:
+  scale: [8, 16, 24, 32, 48, 64]
+  container: "1440px"
 
-  navbar:
-    background: "Transparent with blur effect"
-    height: "72px"
-
-  card:
-    background: "White"
-    border: "1px solid border token"
-    shadow: "Soft large shadow"
-    radius: "18px"
-
-  button:
-    primary: "Primary Indigo"
-    secondary: "White with border"
-    radius: "12px"
-
-  stats-card:
-    layout: "Icon + Metric + Description"
-
-  dashboard-grid:
-    columns: "Responsive 4 / 2 / 1"
-
+glassmorphism:
+  background: "rgba(255, 255, 255, 0.72)"
+  backdrop-blur: "18px"
+  border: "1px solid rgba(255, 255, 255, 0.45)"
+  shadow: "0 20px 60px rgba(37, 99, 235, 0.12)"
 ---
 
-# Aksara - Learning Management System
+# AKSARA UI DESIGN SYSTEM
 
-Source: Aksara Project Documentation 2026.
+## 1. Design Philosophy
+Aksara menggunakan pendekatan **Modern Minimalist + Glassmorphism + Bento UI** untuk menciptakan LMS yang bersih, profesional, cepat dipahami, dan nyaman digunakan.
 
-Tags:
-education,
-learning management system,
-dashboard,
-laravel,
-tailwindcss,
-teacher,
-student,
-admin,
-responsive,
-modern ui
+### Keywords
+- Clean
+- Professional
+- Educational
+- Modern SaaS
+- Friendly
+- Accessible
 
-## Overview
 
-Aksara is a web-based Learning Management System that provides a centralized environment for digital learning activities. The platform connects administrators, teachers, and students into one integrated ecosystem where classroom management, assignments, quizzes, learning materials, grades, schedules, and discussions are managed efficiently.
+## 2. Visual Style
 
-The overall experience should feel modern, organized, and approachable while maintaining high usability across desktop and mobile devices.
+### Design Language
+- Modern Minimalist
+- Glassmorphism
+- Bento UI
+- Soft Shadow
+- Rounded Components
+- Gradient Accent
 
----
 
-## Composition
+## 3. Color System
 
-Preserve the hierarchy of a modern SaaS dashboard.
+| Token | Value |
+|-------|-------|
+| Primary | #2563EB |
+| Secondary | #4F46E5 |
+| Accent | #60A5FA |
+| Success | #22C55E |
+| Warning | #F59E0B |
+| Danger | #EF4444 |
+| Background | #F8FAFC |
+| Surface | #FFFFFF |
+| Text Primary | #0F172A |
+| Text Secondary | #64748B |
 
-First viewport should immediately communicate:
+Gradient:
+`linear-gradient(135deg, #2563EB 0%, #4F46E5 100%)`
 
-- Application branding
-- Welcome headline
-- Quick statistics
-- Primary navigation
-- Active learning activities
 
-Dashboard sections should naturally flow into:
+## 4. Typography
 
-- Statistics
-- Active Classes
-- Recent Materials
-- Upcoming Assignments
-- Notifications
-- Discussion Activity
+Font:
+- Poppins
+- Plus Jakarta Sans
 
-Avoid unnecessary decorative elements that distract from productivity.
+Heading:
+- H1 48 Bold
+- H2 36 Bold
+- H3 28 SemiBold
+- H4 22 SemiBold
 
----
+Body:
+- 16 Regular
 
-## Colors
+Radius:
+- Card: 20px
+- Button: 14px
+- Pill: 999px
 
-The interface should emphasize trust, education, and productivity.
 
-Primary colors:
+## 5. Layout
 
-- Indigo (#4F46E5)
-- Deep Indigo (#4338CA)
+Grid:
+12 Columns
 
-Supporting colors:
+Spacing:
+8 / 16 / 24 / 32 / 48 / 64
 
-- Emerald (#10B981)
-- Amber (#F59E0B)
-- Rose (#F43F5E)
+Container:
+1440px
 
-Neutral palette:
 
-- Slate Background (#F8FAFC)
-- White Surface (#FFFFFF)
-- Border (#E2E8F0)
-- Text Primary (#0F172A)
-- Text Secondary (#64748B)
+## 6. Glassmorphism
 
-Use generous whitespace to create visual comfort.
+Background:
+`rgba(255, 255, 255, 0.72)`
 
----
+Backdrop Blur:
+18px
 
-## Typography
+Border:
+`1px solid rgba(255, 255, 255, 0.45)`
 
-Use **Inter** as the primary typeface.
+Shadow:
+`0 20px 60px rgba(37, 99, 235, 0.12)`
 
-Hierarchy:
 
-- Large Bold Headlines
-- Medium Section Titles
-- Comfortable Body Text
-- Mono labels for metadata
+## 7. Bento UI
 
-Maintain excellent readability with generous spacing.
+Dashboard terdiri dari kartu modular:
+- Hero
+- Progress
+- Jadwal
+- Kelas Aktif
+- Materi
+- Forum
+- Aktivitas
+- Sertifikat
+- Statistik
 
----
+Semua widget dapat dipindahkan tanpa mengubah konsistensi desain.
 
-## Layout
 
-Desktop:
+## 8. Components
 
-- Fixed left sidebar
-- Sticky top navigation
-- Responsive content area
-- Card-based dashboard
+### Buttons
+- Primary
+- Secondary
+- Ghost
+- Danger
+- Icon Button
 
-Tablet:
+### Inputs
+- Text
+- Password
+- Search
+- Select
+- Textarea
 
-- Collapsible sidebar
-- Two-column content grid
+### Cards
+- Glass Card
+- Feature Card
+- Course Card
+- Statistic Card
 
-Mobile:
+### Others
+- Modal
+- Drawer
+- Toast
+- Alert
+- Dropdown
+- Tooltip
+- Tabs
+- Pagination
+- Avatar
+- Breadcrumb
 
-- Bottom navigation or drawer
-- Single-column layout
-- Large touch targets
 
-Spacing should feel premium rather than compact.
+## 9. Font Awesome Icons
 
----
+- Beranda: `fa-house`
+- Dashboard: `fa-table-columns`
+- Kelas: `fa-graduation-cap`
+- Materi: `fa-book-open`
+- Tugas: `fa-file-lines`
+- Forum: `fa-comments`
+- Jadwal: `fa-calendar-days`
+- Nilai: `fa-chart-line`
+- Sertifikat: `fa-award`
+- Profil: `fa-user`
+- Pengaturan: `fa-gear`
+- Notifikasi: `fa-bell`
+- Pencarian: `fa-magnifying-glass`
+- Logout: `fa-right-from-bracket`
 
-## Components
 
-Important reusable components include:
+## 10. Landing Page
 
-- Login Card
-- Dashboard Cards
-- Statistics Cards
-- Classroom Cards
-- Material Cards
-- Assignment Cards
-- Quiz Cards
-- Discussion Threads
-- Grade Tables
-- Schedule Timeline
-- Notification Panel
-- User Profile Dropdown
-- Search Bar
-- Role Badge
-- Primary CTA Button
+### Navbar
+- Logo
+- Beranda
+- Kelas
+- Forum
+- Tentang
+- Masuk
 
-Cards should feature soft shadows and rounded corners with subtle hover elevation.
+### Hero
+- Headline
+- CTA
+- Logo Aksara besar
+- Floating education icons
 
----
+### Feature
+- 4 Bento Cards
 
-## Motion
+### Footer
+- Links
+- Social
+- Copyright
 
-Use subtle animations throughout the application.
 
-Examples include:
+## 11. Dashboard Mahasiswa
 
-- Fade-up page transitions
-- Card hover lift
-- Sidebar expansion
-- Button ripple
-- Notification slide-in
-- Loading skeleton
-- Progress animations
-- Smooth modal transitions
-- Interactive dropdown animations
+### Sidebar
+- Dashboard
+- Kelas
+- Materi
+- Tugas
+- Forum
+- Jadwal
+- Sertifikat
+- Profil
+- Pengaturan
 
-Animations should remain fast, lightweight, and purposeful.
+### Content
+- Welcome Card
+- Progress
+- Kelas Aktif
+- Jadwal Hari Ini
+- Aktivitas
+- Forum Populer
+- Statistik
 
----
 
-## WebGL & Effects
+## 12. Dashboard Dosen
 
-No WebGL is required.
+### Widget
+- Total Kelas
+- Mahasiswa
+- Penilaian
+- Materi
+- Pengumuman
+- Forum
+- Kalender
 
-Instead, enhance the interface using:
 
-- Soft gradients
-- Glassmorphism navbar
-- Background blur
-- Floating decorative shapes
-- Micro interactions
-- Animated statistics counters
-- Gradient icon backgrounds
+## 13. Dashboard Admin
 
-Visual effects should support usability instead of becoming the main attraction.
+### Widget
+- Users
+- Courses
+- Categories
+- Reports
+- Analytics
+- System Status
+- Announcements
 
----
 
-## Guardrails
+## 14. Responsive
 
-- Do not replace the dashboard with a generic landing page.
-- Preserve role-based navigation (Admin, Teacher, Student).
-- Keep dashboard cards as the primary interaction pattern.
-- Use generous whitespace.
-- Maintain accessibility with sufficient color contrast.
-- Ensure responsive behavior on desktop, tablet, and mobile.
-- Prioritize usability over visual complexity.
-- Use consistent spacing and rounded corner language throughout the application.
-- Preserve educational branding and professional appearance.
+- Desktop: 1440+
+- Laptop: 1024
+- Tablet: 768
+- Mobile: 390 (Mobile memakai Bottom Navigation)
+
+
+## 15. Motion
+
+- Transition: 200ms ease
+- Hover: Scale 1.03
+- Card: Lift + Shadow
+- Button: Glow Gradient
+
+
+## 16. Accessibility
+
+- Contrast minimal WCAG AA
+- Visible Focus
+- Keyboard Navigation
+
+
+## 17. Inspiration
+
+- Linear
+- Vercel
+- Notion
+- Framer
+- shadcn/ui
+- Google Classroom
+- Duolingo
+
+
+## 18. Design Goal
+Menciptakan LMS yang modern, ringan, profesional, konsisten, dan mudah dikembangkan dengan identitas visual Aksara.

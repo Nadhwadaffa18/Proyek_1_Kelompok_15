@@ -1,13 +1,40 @@
 <!-- Desktop Sidebar -->
-<aside class="fixed top-0 bottom-0 left-0 w-[280px] bg-white dark:bg-slate-900 border-r border-slate-200/80 dark:border-slate-800/80 hidden lg:flex flex-col z-20">
+<aside
+    :class="sidebarCollapsed ? 'w-20' : 'w-[280px]'"
+    class="fixed top-0 bottom-0 left-0 bg-white/72 backdrop-blur-[18px] border-r border-white/45 shadow-[0_20px_60px_rgba(37,99,235,0.04)] hidden lg:flex flex-col z-20 transition-all duration-300">
     <!-- Brand Branding -->
-    <div class="h-[72px] flex items-center justify-between px-6 border-b border-slate-200/80 dark:border-slate-800/80">
-        <a href="{{ route('dashboard') }}" class="flex items-center gap-2.5">
-            <span class="font-bold text-2xl tracking-tight bg-gradient-to-r from-indigo-600 to-indigo-400 bg-clip-text text-transparent font-sans">Aksara</span>
-            <span class="text-[10px] font-bold font-mono px-2 py-0.5 rounded-full bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border border-indigo-500/15 capitalize">
-                {{ Auth::user()->role }}
-            </span>
-        </a>
+    <div class="h-[72px] flex items-center justify-between px-6 border-b border-slate-100">
+        <a href="{{ route('dashboard') }}" class="flex items-center justify-center w-full">
+
+    <!-- Saat sidebar terbuka -->
+    <div x-show="!sidebarCollapsed"
+         x-transition
+         class="flex items-center gap-2.5">
+        <img
+                src="{{ asset('storage/images/logo_aksara.png') }}"
+                alt="Aksara"
+                class="h-8 w-auto">
+        <span class="font-bold text-2xl tracking-tight bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent font-display">
+            Aksara
+        </span>
+
+        <span class="text-[10px] font-bold font-mono px-2 py-0.5 rounded-full bg-white text-primary border border-white/45 capitalize">
+            {{ Auth::user()->role }}
+        </span>
+    </div>
+
+    <!-- Saat sidebar ditutup -->
+    <span
+        x-show="sidebarCollapsed"
+        x-transition
+        class="flex items-center justify-center">
+        <img
+        src="{{ asset('storage/images/logo_aksara.png') }}"
+        alt="Aksara"
+        class="h-8 w-auto">
+    </span>
+
+</a>
     </div>
 
     <!-- Navigation Menu Items -->
@@ -17,22 +44,22 @@
             $links = [];
             if ($role === 'admin') {
                 $links = [
-                    ['route' => 'admin.dashboard', 'label' => 'Dashboard', 'pattern' => 'admin.dashboard', 'icon' => 'M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z'],
-                    ['route' => 'admin.users.index', 'label' => 'Kelola User', 'pattern' => 'admin.users.*', 'icon' => 'M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z'],
-                    ['route' => 'admin.classes.index', 'label' => 'Kelola Kelas', 'pattern' => 'admin.classes.*', 'icon' => 'M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z'],
+                    ['route' => 'admin.dashboard', 'label' => 'Dashboard', 'pattern' => 'admin.dashboard', 'icon' => 'fa-solid fa-table-columns'],
+                    ['route' => 'admin.users.index', 'label' => 'Kelola User', 'pattern' => 'admin.users.*', 'icon' => 'fa-solid fa-user'],
+                    ['route' => 'admin.classes.index', 'label' => 'Kelola Kelas', 'pattern' => 'admin.classes.*', 'icon' => 'fa-solid fa-graduation-cap'],
                 ];
             } elseif ($role === 'guru') {
                 $links = [
-                    ['route' => 'teacher.dashboard', 'label' => 'Dashboard', 'pattern' => 'teacher.dashboard', 'icon' => 'M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z'],
-                    ['route' => 'teacher.materials.index', 'label' => 'Materi', 'pattern' => 'teacher.materials.*', 'icon' => 'M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z'],
-                    ['route' => 'teacher.assignments.index', 'label' => 'Tugas', 'pattern' => 'teacher.assignments.*', 'icon' => 'M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z'],
-                    ['route' => 'teacher.quizzes.index', 'label' => 'Kuis', 'pattern' => 'teacher.quizzes.*', 'icon' => 'M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z'],
+                    ['route' => 'teacher.dashboard', 'label' => 'Dashboard', 'pattern' => 'teacher.dashboard', 'icon' => 'fa-solid fa-table-columns'],
+                    ['route' => 'teacher.materials.index', 'label' => 'Materi', 'pattern' => 'teacher.materials.*', 'icon' => 'fa-solid fa-book-open'],
+                    ['route' => 'teacher.assignments.index', 'label' => 'Tugas', 'pattern' => 'teacher.assignments.*', 'icon' => 'fa-solid fa-file-lines'],
+                    ['route' => 'teacher.quizzes.index', 'label' => 'Kuis', 'pattern' => 'teacher.quizzes.*', 'icon' => 'fa-solid fa-award'],
                 ];
             } elseif ($role === 'siswa') {
                 $links = [
-                    ['route' => 'student.dashboard', 'label' => 'Dashboard', 'pattern' => 'student.dashboard', 'icon' => 'M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z'],
-                    ['route' => 'student.classes.index', 'label' => 'Daftar Kelas', 'pattern' => 'student.classes.*', 'icon' => 'M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253'],
-                    ['route' => 'student.grades', 'label' => 'Nilai', 'pattern' => 'student.grades', 'icon' => 'M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z'],
+                    ['route' => 'student.dashboard', 'label' => 'Dashboard', 'pattern' => 'student.dashboard', 'icon' => 'fa-solid fa-table-columns'],
+                    ['route' => 'student.classes.index', 'label' => 'Daftar Kelas', 'pattern' => 'student.classes.*', 'icon' => 'fa-solid fa-graduation-cap'],
+                    ['route' => 'student.grades', 'label' => 'Nilai', 'pattern' => 'student.grades', 'icon' => 'fa-solid fa-chart-line'],
                 ];
             }
         @endphp
@@ -42,24 +69,24 @@
                 $isActive = request()->routeIs($link['pattern']);
             @endphp
             <a href="{{ route($link['route']) }}" 
-               class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all group {{ $isActive ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/15' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50 dark:text-slate-400 dark:hover:text-white dark:hover:bg-slate-800/60' }}">
-                <svg class="w-5 h-5 shrink-0 transition-transform group-hover:scale-105 {{ $isActive ? 'text-white' : 'text-slate-400 group-hover:text-slate-600 dark:text-slate-500 dark:group-hover:text-slate-300' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="{{ $link['icon'] }}" />
-                </svg>
-                <span>{{ $link['label'] }}</span>
+               class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all group {{ $isActive ? 'bg-primary text-white shadow-lg shadow-primary/20' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50' }}">
+                <i class="{{ $link['icon'] }} w-5 text-center shrink-0 transition-transform group-hover:scale-110 text-base {{ $isActive ? 'text-white' : 'text-slate-400 group-hover:text-slate-600' }}"></i>
+                <span
+    x-show="!sidebarCollapsed"
+    x-transition.opacity.duration.200ms
+>
+    {{ $link['label'] }}
+</span>
             </a>
         @endforeach
     </nav>
 
     <!-- Sidebar Profile Settings & Quick Info -->
-    <div class="p-4 border-t border-slate-200/80 dark:border-slate-800/80 bg-slate-50/50 dark:bg-slate-900/50">
-        <div class="flex items-center gap-3 p-2.5 rounded-xl border border-slate-200/40 dark:border-slate-800/40 bg-white dark:bg-slate-900">
-            <div class="w-10 h-10 rounded-lg bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 font-bold flex items-center justify-center border border-indigo-500/20">
-                {{ strtoupper(substr(Auth::user()->name, 0, 2)) }}
-            </div>
-            <div class="flex-1 min-w-0">
-                <p class="text-xs font-semibold text-slate-800 dark:text-slate-200 truncate">{{ Auth::user()->name }}</p>
-                <p class="text-[10px] text-slate-400 dark:text-slate-500 truncate font-mono">{{ Auth::user()->email }}</p>
+    <div class="p-4 border-t border-slate-100 bg-slate-50/50">
+        <div class="p-3 rounded-xl border border-slate-300 bg-white">
+            <div class="min-w-0">
+                <p class="text-xs font-semibold text-slate-800 truncate">{{ Auth::user()->name }}</p>
+                <p class="text-[10px] text-slate-400 truncate font-mono mt-0.5">{{ Auth::user()->email }}</p>
             </div>
         </div>
     </div>
@@ -91,17 +118,15 @@
          x-transition:leave="transition ease-in-out duration-300 transform"
          x-transition:leave-start="translate-x-0"
          x-transition:leave-end="-translate-x-full"
-         class="relative flex flex-col w-full max-w-[280px] h-full bg-white dark:bg-slate-900 shadow-soft-lg">
+         class="relative flex flex-col w-full max-w-[280px] h-full bg-white shadow-soft-lg">
         
         <!-- Close Button -->
-        <div class="h-[72px] flex items-center justify-between px-6 border-b border-slate-200/80 dark:border-slate-800/80">
+        <div class="h-[72px] flex items-center justify-between px-6 border-b border-slate-100">
             <a href="{{ route('dashboard') }}" class="flex items-center gap-2">
-                <span class="font-bold text-xl tracking-tight bg-gradient-to-r from-indigo-600 to-indigo-400 bg-clip-text text-transparent font-sans">Aksara</span>
+                <span class="font-bold text-xl tracking-tight bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent font-display">Aksara</span>
             </a>
-            <button @click="sidebarOpen = false" class="p-2 rounded-xl text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-                </svg>
+            <button @click="sidebarOpen = false" class="p-2 rounded-xl text-slate-500 hover:bg-slate-100 transition-colors">
+                <i class="fa-solid fa-xmark text-lg"></i>
             </button>
         </div>
 
@@ -113,24 +138,24 @@
                 @endphp
                 <a href="{{ route($link['route']) }}" 
                    @click="sidebarOpen = false"
-                   class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all {{ $isActive ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/15' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50 dark:text-slate-400 dark:hover:text-white dark:hover:bg-slate-800/60' }}">
-                    <svg class="w-5 h-5 shrink-0 {{ $isActive ? 'text-white' : 'text-slate-400 dark:text-slate-500' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="{{ $link['icon'] }}" />
-                    </svg>
-                    <span>{{ $link['label'] }}</span>
+                   class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all {{ $isActive ? 'bg-primary text-white shadow-lg shadow-primary/20' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50' }}">
+                    <i class="{{ $link['icon'] }} w-5 text-center shrink-0 text-base {{ $isActive ? 'text-white' : 'text-slate-400' }}"></i>
+                    <span
+    x-show="!sidebarCollapsed"
+    x-transition.opacity.duration.200ms
+>
+    {{ $link['label'] }}
+</span>
                 </a>
             @endforeach
         </nav>
 
         <!-- Profile Settings Info mobile footer -->
-        <div class="p-4 border-t border-slate-200/80 dark:border-slate-800/80 bg-slate-50/50 dark:bg-slate-900/50">
-            <div class="flex items-center gap-3 p-2.5 rounded-xl border border-slate-200/40 dark:border-slate-800/40 bg-white dark:bg-slate-900">
-                <div class="w-10 h-10 rounded-lg bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 font-bold flex items-center justify-center border border-indigo-500/20">
-                    {{ strtoupper(substr(Auth::user()->name, 0, 2)) }}
-                </div>
-                <div class="flex-1 min-w-0">
-                    <p class="text-xs font-semibold text-slate-800 dark:text-slate-200 truncate">{{ Auth::user()->name }}</p>
-                    <p class="text-[10px] text-slate-400 dark:text-slate-500 truncate font-mono">{{ Auth::user()->email }}</p>
+        <div class="p-4 border-t border-slate-100 bg-slate-50/50">
+            <div class="p-3 rounded-xl border border-slate-100 bg-white">
+                <div class="min-w-0">
+                    <p class="text-xs font-semibold text-slate-800 truncate">{{ Auth::user()->name }}</p>
+                    <p class="text-[10px] text-slate-400 truncate font-mono mt-0.5">{{ Auth::user()->email }}</p>
                 </div>
             </div>
         </div>
