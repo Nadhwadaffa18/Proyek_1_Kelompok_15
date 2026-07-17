@@ -1,16 +1,17 @@
 <x-app-layout>
     <x-slot name="header">
-        <div class="flex justify-between items-center w-full">
+        <div class="flex justify-between items-center w-full gap-4">
             <div>
-                <h2 class="font-bold text-2xl text-slate-900 dark:text-white tracking-tight leading-tight">
-                    🗨️ Forum Diskusi — {{ $class->name }}
+                <h2 class="font-display font-bold text-2xl text-slate-900 tracking-tight leading-tight">
+                    <span class="text-white p-2">
+                        <i class="fa-solid fa-comments"></i>
+                    </span>
+                    Forum Diskusi — {{ $class->name }}
                 </h2>
-                <p class="text-xs font-semibold font-mono text-slate-400 uppercase tracking-wider mt-1.5 font-mono">Diskusikan materi dan tanyakan pertanyaan di sini</p>
+                <p class="text-xs font-semibold text-slate-900 uppercase tracking-wider mt-1.5">Diskusikan materi dan tanyakan pertanyaan di sini</p>
             </div>
-            <a href="{{ route('forum.create', $class->id) }}" class="inline-flex items-center px-4 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-sm font-semibold rounded-xl text-white shadow-sm hover:shadow active:scale-[0.98] transition-all duration-150">
-                <svg class="w-4.5 h-4.5 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
-                </svg>
+            <a href="{{ route('forum.create', $class->id) }}" class="inline-flex items-center px-5 py-2.5 bg-gradient-to-r from-primary to-secondary text-white text-sm font-semibold rounded-[14px] shadow-sm hover:scale-[1.02] active:scale-[0.98] transition-all duration-200">
+                <i class="fa-solid fa-plus mr-1.5"></i>
                 Topik Baru
             </a>
         </div>
@@ -18,19 +19,17 @@
 
     <div class="max-w-4xl mx-auto space-y-6">
         @if (session('success'))
-            <div class="bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 p-4 rounded-xl shadow-sm backdrop-blur-md flex items-center gap-3">
-                <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-                <span class="text-sm font-medium">{{ session('success') }}</span>
+            <div class="bg-emerald-50 border border-emerald-200 text-emerald-600 p-4 rounded-xl shadow-sm flex items-center gap-3">
+                <i class="fa-solid fa-circle-check text-lg shrink-0"></i>
+                <span class="text-sm font-semibold">{{ session('success') }}</span>
             </div>
         @endif
 
         @forelse ($discussions as $discussion)
-            <div class="bg-white dark:bg-slate-900 rounded-[18px] border border-slate-200/80 dark:border-slate-800/80 shadow-soft p-5 flex items-start gap-4 hover:shadow-soft-lg transition-all duration-300">
+            <div class="bg-white rounded-card border border-white/45 shadow-soft p-5 flex items-start gap-4 hover:shadow-soft-lg hover:scale-[1.01] transition-all duration-300">
                 {{-- Avatar --}}
                 <div class="shrink-0 w-10 h-10 rounded-lg flex items-center justify-center font-bold text-sm border uppercase
-                    {{ $discussion->user->role === 'guru' ? 'bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border-indigo-500/15' : 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/15' }}">
+                    {{ $discussion->user->role === 'guru' ? 'bg-primary/10 text-primary border-primary/15' : 'bg-emerald-500/10 text-emerald-600 border-emerald-500/15' }}">
                     {{ substr($discussion->user->name, 0, 2) }}
                 </div>
 
@@ -38,31 +37,29 @@
                 <div class="flex-grow min-w-0">
                     <div class="flex items-center gap-2 flex-wrap mb-2">
                         @if ($discussion->is_pinned)
-                            <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[9px] font-bold font-mono uppercase bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/10">
-                                📌 PINNED
+                            <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[9px] font-bold uppercase bg-amber-500/10 text-amber-600 border border-amber-500/10">
+                                <i class="fa-solid fa-thumbtack text-[8px] rotate-45"></i> PINNED
                             </span>
                         @endif
-                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[9px] font-bold font-mono uppercase
-                            {{ $discussion->user->role === 'guru' ? 'bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border border-indigo-500/10' : 'bg-slate-500/10 text-slate-500 dark:text-slate-400 border border-slate-500/10' }}">
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[9px] font-bold uppercase
+                            {{ $discussion->user->role === 'guru' ? 'bg-primary/10 text-primary border border-primary/10' : 'bg-slate-500/10 text-slate-500 border border-slate-500/10' }}">
                             {{ $discussion->user->role }}
                         </span>
                     </div>
 
                     <a href="{{ route('forum.show', [$class->id, $discussion->id]) }}"
-                       class="font-bold text-slate-900 dark:text-white hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors text-base leading-snug block tracking-tight">
+                       class="font-display font-bold text-slate-900 hover:text-primary transition-colors text-base leading-snug block tracking-tight">
                         {{ $discussion->title }}
                     </a>
-                    <p class="text-sm text-slate-500 dark:text-slate-400 mt-1.5 line-clamp-1 leading-relaxed">{{ $discussion->body }}</p>
+                    <p class="text-sm text-slate-500 mt-1.5 line-clamp-1 leading-relaxed">{{ $discussion->body }}</p>
 
-                    <div class="flex items-center gap-3 mt-3 text-xs text-slate-400 dark:text-slate-500 font-mono">
-                        <span class="font-sans font-semibold text-slate-600 dark:text-slate-300">{{ $discussion->user->name }}</span>
+                    <div class="flex items-center gap-3 mt-3 text-xs text-slate-450 font-semibold uppercase tracking-wider">
+                        <span class="font-sans text-slate-600">{{ $discussion->user->name }}</span>
                         <span>·</span>
                         <span>{{ $discussion->created_at->diffForHumans() }}</span>
                         <span>·</span>
-                        <span class="inline-flex items-center gap-1">
-                            <svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
-                            </svg>
+                        <span class="inline-flex items-center gap-1.5 text-slate-550">
+                            <i class="fa-regular fa-comment text-slate-400"></i>
                             {{ $discussion->replies->count() }} balasan
                         </span>
                     </div>
@@ -75,37 +72,33 @@
                             @csrf
                             @method('PATCH')
                             <button type="submit" title="{{ $discussion->is_pinned ? 'Unpin' : 'Pin' }}"
-                                class="text-slate-400 hover:text-amber-500 dark:hover:text-amber-400 transition-colors p-1.5 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg">
-                                <svg class="w-4.5 h-4.5" fill="{{ $discussion->is_pinned ? 'currentColor' : 'none' }}" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/>
-                                </svg>
+                                class="text-slate-400 hover:text-amber-500 transition-colors p-1.5 hover:bg-slate-50 rounded-lg">
+                                <i class="{{ $discussion->is_pinned ? 'fa-solid' : 'fa-regular' }} fa-solid fa-thumbtack rotate-45 text-base"></i>
                             </button>
                         </form>
                     @endif
 
                     @if (auth()->user()->role === 'guru' || $discussion->user_id === auth()->id())
                         <form action="{{ route('forum.destroy', [$class->id, $discussion->id]) }}" method="POST"
-                              onsubmit="return confirm('Hapus topik ini beserta semua balasannya?')">
+                               onsubmit="return confirm('Hapus topik ini beserta semua balasannya?')">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="text-slate-400 hover:text-rose-600 dark:hover:text-rose-400 transition-colors p-1.5 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg">
-                                <svg class="w-4.5 h-4.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
-                                </svg>
+                            <button type="submit" class="text-slate-400 hover:text-danger transition-colors p-1.5 hover:bg-slate-50 rounded-lg">
+                                <i class="fa-solid fa-trash-can text-base"></i>
                             </button>
                         </form>
                     @endif
                 </div>
             </div>
         @empty
-            <div class="bg-white dark:bg-slate-900 rounded-[18px] border border-slate-200/80 dark:border-slate-800/80 p-16 text-center shadow-soft">
-                <div class="w-16 h-16 rounded-xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border border-indigo-500/15 flex items-center justify-center mx-auto mb-5 text-2xl">
-                    💬
+            <div class="bg-white/72 backdrop-blur-[18px] rounded-card border border-white/45 p-16 text-center shadow-soft">
+                <div class="w-16 h-16 rounded-xl bg-primary/10 text-primary border border-primary/15 flex items-center justify-center mx-auto mb-5 text-2xl">
+                    <i class="fa-solid fa-comments"></i>
                 </div>
-                <h3 class="font-bold text-slate-850 dark:text-white text-lg">Belum ada diskusi</h3>
-                <p class="text-slate-400 dark:text-slate-500 text-xs mt-1 max-w-sm mx-auto leading-relaxed">Jadilah yang pertama memulai topik diskusi baru untuk kelas ini!</p>
+                <h3 class="font-bold text-slate-800 text-lg font-display">Belum ada diskusi</h3>
+                <p class="text-slate-400 text-xs mt-1 max-w-sm mx-auto leading-relaxed">Jadilah yang pertama memulai topik diskusi baru untuk kelas ini!</p>
                 <a href="{{ route('forum.create', $class->id) }}"
-                   class="inline-flex items-center mt-5 px-4 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold rounded-xl transition-all shadow-sm">
+                   class="inline-flex items-center mt-5 px-5 py-2.5 bg-gradient-to-r from-primary to-secondary text-white text-xs font-semibold rounded-[14px] shadow-sm hover:scale-[1.02] transition-all">
                     Buat Topik Pertama
                 </a>
             </div>
