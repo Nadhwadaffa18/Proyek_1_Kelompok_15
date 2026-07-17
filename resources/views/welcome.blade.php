@@ -103,16 +103,16 @@
         <header class="animate-fade-up sticky top-0 z-30 bg-white/72 backdrop-blur-[18px] border-b border-white/45 shadow-[0_20px_60px_rgba(37,99,235,0.02)]">
             <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
                 <div class="flex items-center gap-8">
-                   <a href="/" class="flex items-center gap-3">
-                    <!-- Logo -->
-                    <img
-                        src="{{ asset('storage/images/logo_aksara.png') }}"
-                        alt="Logo Aksara"
-                        class="w-10 h-10 object-contain">
-                    <!-- Nama -->
-                    <span class="font-display font-extrabold text-2xl tracking-tight bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-                        Aksara
-                    </span>
+                    <a href="/" class="flex items-center gap-3">
+                        <!-- Logo -->
+                        <img
+                            src="{{ asset('images/logo_aksara.png') }}"
+                            alt="Logo Aksara"
+                            class="w-10 h-10 object-contain">
+                        <!-- Nama -->
+                        <span class="font-display font-extrabold text-2xl tracking-tight bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                            Aksara
+                        </span>
                 </a>
                     <nav class="hidden md:flex items-center gap-6">
                         <a href="#hero" class="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">Beranda</a>
@@ -181,8 +181,8 @@
             <div class="lg:col-span-5 relative flex items-center justify-center min-h-[350px] animate-fade-up delay-500">
                 <div class="relative w-72 h-72 rounded-full bg-gradient-to-tr from-primary/10 to-secondary/10 flex items-center justify-center shadow-[0_0_80px_rgba(37,99,235,0.05)] border border-white/40">
                     <span class="font-display font-extrabold text-7xl text-primary/30"><img
-        src="{{ asset('storage/images/logo_aksara.png') }}"
-        alt="Aksara" class="w-40 h-auto animate-float drop-shadow-2xl"></span>
+                            src="{{ asset('images/logo_aksara.png') }}"
+                            alt="Logo Aksara" class="w-40 h-auto animate-float drop-shadow-2xl"></span>
                     
                     <!-- Floating Icon 1 (Top Left) -->
                     <div class="absolute -top-4 -left-4 w-16 h-16 rounded-card glass-card flex items-center justify-center text-primary text-xl animate-float shadow-soft">

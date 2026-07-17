@@ -10,10 +10,10 @@
     <div x-show="!sidebarCollapsed"
          x-transition
          class="flex items-center gap-2.5">
-        <img
-                src="{{ asset('storage/images/logo_aksara.png') }}"
-                alt="Aksara"
-                class="h-8 w-auto">
+       <img
+        src="{{ asset('images/logo_aksara.png') }}"
+        alt="Logo Aksara"
+        class="h-8 w-auto">
         <span class="font-bold text-2xl tracking-tight bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent font-display">
             Aksara
         </span>
@@ -29,8 +29,8 @@
         x-transition
         class="flex items-center justify-center">
         <img
-        src="{{ asset('storage/images/logo_aksara.png') }}"
-        alt="Aksara"
+        src="{{ asset('images/logo_aksara.png') }}"
+        alt="Logo Aksara"
         class="h-8 w-auto">
     </span>
 
