@@ -1,10 +1,10 @@
 <x-app-layout>
     <x-slot name="header">
-        <div class="flex justify-between items-center w-full gap-4">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between w-full gap-3">
             <h2 class="font-display font-bold text-2xl text-slate-900 tracking-tight leading-tight">
                 {{ __('Kelola Tugas / Assignment') }}
             </h2>
-            <a href="{{ route('teacher.assignments.create') }}" class="inline-flex items-center whitespace-nowrap px-5 py-2.5 bg-gradient-to-r from-primary to-secondary text-white text-sm font-semibold rounded-[14px] shadow-sm hover:scale-[1.02] active:scale-[0.98] transition-all duration-200">
+            <a href="{{ route('teacher.assignments.create') }}" class="inline-flex items-center whitespace-nowrap px-5 py-2.5 bg-gradient-to-r from-primary to-secondary text-white text-sm font-semibold rounded-[14px] shadow-sm hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 w-fit">
                 <i class="fa-solid fa-plus mr-1.5"></i>
                 Buat Tugas
             </a>
@@ -45,7 +45,7 @@
                                             {{ $assignment->submissions()->count() }} SISWA
                                         </span>
                                     </td>
-                                    <td class="py-4 text-right space-x-3.5">
+                                    <td class="py-4 text-right space-x-3.5 whitespace-nowrap">
                                         <a href="{{ route('teacher.assignments.show', $assignment->id) }}" class="inline-flex items-center text-xs font-bold text-primary hover:underline">
                                             Detail & Nilai
                                         </a>

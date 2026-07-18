@@ -33,7 +33,7 @@
                     <div class="p-6 bg-white">
                         <ul class="divide-y divide-slate-100">
                             @forelse ($class->materials as $material)
-                                <li class="py-4 flex justify-between items-start first:pt-0 last:pb-0">
+                                <li class="py-4 flex flex-col sm:flex-row sm:items-start justify-between gap-3 first:pt-0 last:pb-0">
                                     <div class="space-y-1.5">
                                         <h4 class="font-display font-bold text-slate-900 text-sm">{{ $material->title }}</h4>
                                         <p class="text-xs text-slate-500 leading-relaxed">{{ $material->description ?? 'Tidak ada deskripsi.' }}</p>
@@ -70,7 +70,7 @@
                     <div class="p-6 bg-white">
                         <ul class="divide-y divide-slate-100">
                             @forelse ($class->assignments as $assignment)
-                                <li class="py-4 flex justify-between items-center first:pt-0 last:pb-0">
+                                <li class="py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 first:pt-0 last:pb-0">
                                     <div class="space-y-1">
                                         <h4 class="font-display font-bold text-slate-900 text-sm">{{ $assignment->title }}</h4>
                                         <p class="text-[10px] text-danger font-bold uppercase tracking-wider font-mono"><i class="fa-solid fa-clock mr-1"></i> TENGGAT: {{ $assignment->deadline->format('d M Y H:i') }}</p>
@@ -109,7 +109,7 @@
                     <div class="p-6 bg-white">
                         <ul class="divide-y divide-slate-100">
                             @forelse ($class->quizzes as $quiz)
-                                <li class="py-3 flex justify-between items-center first:pt-0 last:pb-0">
+                                <li class="py-3 flex flex-col sm:flex-row sm:items-center justify-between gap-3 first:pt-0 last:pb-0">
                                     <div class="space-y-0.5">
                                         <h4 class="font-display font-bold text-slate-900 text-sm">{{ $quiz->title }}</h4>
                                         <p class="text-[10px] text-slate-450 font-bold uppercase tracking-wider font-mono"><i class="fa-solid fa-clock mr-1"></i> Durasi: {{ $quiz->duration_minutes }} menit</p>

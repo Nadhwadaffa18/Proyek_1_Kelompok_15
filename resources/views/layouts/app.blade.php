@@ -62,32 +62,38 @@
             <div  :class="sidebarCollapsed ? 'lg:pl-20' : 'lg:pl-[280px]'"
     class="flex-grow flex flex-col min-w-0 min-h-screen transition-all duration-300 bg-gradient-to-b from-blue-500/70 via-blue-100 to-white">
                 <!-- Sticky Top Navigation -->
-                <header class="h-[72px] sticky top-0 z-30 bg-white/72 backdrop-blur-[18px] border-b border-white/45 shadow-[0_20px_60px_rgba(37,99,235,0.04)] px-6 flex items-center justify-between">
-                    <!-- Left: Menu trigger & Page title -->
-                    <div class="flex items-center gap-4">
-
-                <!-- Mobile -->
-                <button @click="sidebarOpen = true"
-                    class="lg:hidden p-2 rounded-xl text-slate-500 hover:bg-slate-100 transition-colors">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M4 6h16M4 12h16M4 18h16"/>
-                    </svg>
-                </button>
-                <!-- Desktop -->
-                <button @click="sidebarCollapsed = !sidebarCollapsed"
-                    class="hidden lg:flex items-center justify-center w-10 h-10 rounded-xl text-slate-500 hover:bg-slate-100 transition-all duration-300">
-                    <i class="fa-solid fa-bars"></i>
-                </button>
-                @isset($header)
-                    <div class="font-semibold text-lg text-slate-900 leading-tight">
-                        {{ $header }}
+                <header class="grid grid-cols-2 lg:flex lg:items-center lg:justify-between gap-3 min-h-[72px] py-3 lg:py-0 sticky top-0 z-30 bg-white/72 backdrop-blur-[18px] border-b border-white/45 shadow-[0_20px_60px_rgba(37,99,235,0.04)] px-4 sm:px-6">
+                    <!-- Left: Menu trigger & Mobile brand -->
+                    <div class="flex items-center gap-3 col-span-1 min-w-0">
+                        <!-- Mobile -->
+                        <button @click="sidebarOpen = true"
+                            class="lg:hidden p-2 rounded-xl text-slate-500 hover:bg-slate-100 transition-colors shrink-0">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4 6h16M4 12h16M4 18h16"/>
+                            </svg>
+                        </button>
+                        <!-- Desktop -->
+                        <button @click="sidebarCollapsed = !sidebarCollapsed"
+                            class="hidden lg:flex items-center justify-center w-10 h-10 rounded-xl text-slate-500 hover:bg-slate-100 transition-all duration-300 shrink-0">
+                            <i class="fa-solid fa-bars"></i>
+                        </button>
+                        <!-- Mobile Logo -->
+                        <a href="{{ route('dashboard') }}" class="flex items-center gap-2 lg:hidden shrink-0">
+                            <img src="{{ asset('images/logo_aksara.png') }}" alt="Logo Aksara" class="h-8 w-auto">
+                            <span class="font-bold text-xl tracking-tight bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent font-display">Aksara</span>
+                        </a>
                     </div>
-                @endisset
-            </div>
+
+                    <!-- Middle: Page Title / Subheader (Full width on mobile, middle on desktop) -->
+                    @isset($header)
+                        <div class="col-span-2 lg:col-span-1 lg:flex-grow lg:px-4 font-semibold text-lg text-slate-900 leading-tight w-full lg:w-auto">
+                            {{ $header }}
+                        </div>
+                    @endisset
 
                     <!-- Right: Notifications & Profile -->
-                    <div class="flex items-center gap-4">
+                    <div class="flex items-center justify-end gap-3 lg:gap-4 col-span-1 shrink-0">
                         <!-- Notification Bell Dropdown -->
                         <div class="relative" x-data="{ open: false }">
                             @php $unreadCount = auth()->user()->unreadNotificationsCount(); @endphp
